@@ -2,37 +2,75 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Outlook Check-in Generator</title>
+<title>CHARCHABIL LM9EWD</title>
 
 <style>
+/* ===== GLOBAL STYLE ===== */
 body {
-    font-family: "Aptos Serif", serif;
-    background: #ffffff;
-    padding: 20px;
+    background: radial-gradient(circle at top, #1a0000, #000000);
+    color: #e6e6e6;
+    font-family: 'Segoe UI', sans-serif;
+    padding: 30px;
 }
 
-h3 {
-    margin-bottom: 10px;
+/* ===== LOGO ===== */
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
+.logo svg text {
+    font-size: 42px;
+    font-weight: bold;
+    fill: #8b0000;
+    stroke: #ff0000;
+    stroke-width: 1.5;
+    letter-spacing: 3px;
+    filter: drop-shadow(0 0 6px red);
+}
+
+/* ===== INPUT AREA ===== */
 textarea {
     width: 100%;
-    height: 200px;
+    height: 180px;
+    background: #0b0000;
+    color: #ffffff;
+    border: 1px solid #5a0000;
     font-size: 14px;
+    padding: 10px;
+    outline: none;
 }
 
+textarea::placeholder {
+    color: #777;
+}
+
+/* ===== BUTTONS ===== */
 button {
     margin-top: 10px;
-    padding: 8px 18px;
+    padding: 10px 22px;
     font-size: 14px;
     cursor: pointer;
+    background: linear-gradient(45deg, #5a0000, #9b0000);
+    border: none;
+    color: white;
+    letter-spacing: 1px;
+    box-shadow: 0 0 10px rgba(255,0,0,0.4);
 }
 
+button:hover {
+    background: linear-gradient(45deg, #9b0000, #ff0000);
+}
+
+/* ===== OUTPUT (IMPORTANT) ===== */
 table {
-    margin-top: 20px;
+    margin-top: 25px;
     border-collapse: collapse;
     font-size: 12pt;
     width: 100%;
+    font-family: "Aptos Serif", serif; /* 🔒 Outlook Safe */
+    color: #000000;
+    background: #ffffff;
 }
 
 td {
@@ -53,12 +91,18 @@ td {
 
 <body>
 
-<h3>Outlook Check-in Generator</h3>
+<div class="logo">
+<svg width="100%" height="60" viewBox="0 0 1200 60">
+  <text x="50%" y="45" text-anchor="middle">
+    CHARCHABIL LM9EWD
+  </text>
+</svg>
+</div>
 
-<textarea id="input" placeholder="لسّق اللائحة هنا (سطر واحد لكل شخص)..."></textarea>
+<textarea id="input" placeholder="لسّق اللائحة هنا… (سطر واحد لكل شخص)"></textarea>
 <br>
-<button onclick="generate()">Generate</button>
-<button onclick="copyResult()">Copy for Outlook</button>
+<button onclick="generate()">GENERATE</button>
+<button onclick="copyResult()">COPY FOR OUTLOOK</button>
 
 <div id="output"></div>
 
@@ -73,16 +117,9 @@ function generate() {
     let i = 1;
 
     lines.forEach(line => {
-        // نحيد الترقيم إلا كان
         line = line.replace(/^\d+\./, "").trim();
-
-        // نقسم حسب الفراغات
         const parts = line.split(/\s+/);
-
-        // آخر عنصر = الكود
         const code = parts.pop();
-
-        // الباقي = الاسم
         const name = parts.join(" ");
 
         html += `
@@ -104,7 +141,7 @@ function copyResult() {
     window.getSelection().addRange(range);
     document.execCommand("copy");
     window.getSelection().removeAllRanges();
-    alert("✔ Copied! Paste it directly in Outlook Desktop.");
+    alert("🩸 COPIED — Paste directly in Outlook.");
 }
 </script>
 

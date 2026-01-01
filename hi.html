@@ -55,7 +55,7 @@ td {
 
 <h3>Outlook Check-in Generator</h3>
 
-<textarea id="input" placeholder="لسّق اللائحة هنا (سطر واحد لكل شخص)..."></textarea>
+<textarea id="input" placeholder="DIR DIK L3AYBA LI KAT3RAF DIR DIMA CTRL+V"></textarea>
 <br>
 <button onclick="generate()">Generate</button>
 <button onclick="copyResult()">Copy for Outlook</button>
@@ -73,16 +73,12 @@ function generate() {
     let i = 1;
 
     lines.forEach(line => {
-        // نحيد الترقيم إلا كان
         line = line.replace(/^\d+\./, "").trim();
 
-        // نقسم حسب الفراغات
         const parts = line.split(/\s+/);
 
-        // آخر عنصر = الكود
         const code = parts.pop();
 
-        // الباقي = الاسم
         const name = parts.join(" ");
 
         html += `
